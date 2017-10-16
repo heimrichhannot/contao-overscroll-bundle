@@ -3,4 +3,4 @@
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['renderCustomBlockModule']['renderOverscrollBlockModule'] = ['huh.overscroll.listener.hooks', 'renderOverscrollBlockModule'];
+$GLOBALS['TL_HOOKS']['generatePage']['renderOverscrollBlock'] = ['huh.overscroll.listener.hooks', 'renderOverscrollBlock'];
