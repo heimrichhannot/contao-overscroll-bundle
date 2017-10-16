@@ -7,21 +7,18 @@
  * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
  */
 
-namespace HeimrichHannot\NewsPaginationBundle;
+namespace HeimrichHannot\OverscrollBundle;
 
-use HeimrichHannot\NewsBundle\DependencyInjection\NewsPaginationExtension;
+use HeimrichHannot\OverscrollBundle\DependencyInjection\OverscrollExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NewsPaginationBundle extends Bundle
+class OverscrollBundle extends Bundle
 {
-    const CONTENT_ELEMENT_NEWS_PAGINATION_START = 'news_pagination_start';
-    const CONTENT_ELEMENT_NEWS_PAGINATION_STOP  = 'news_pagination_stop';
-
     /**
      * {@inheritdoc}
      */
     public function getContainerExtension()
     {
-        return new NewsPaginationExtension();
+        return new OverscrollExtension();
     }
 }
