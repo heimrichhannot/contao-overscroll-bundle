@@ -17,7 +17,7 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(OverscrollBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class])
+                ->setLoadAfter([ContaoCoreBundle::class, 'blocks'])
         ];
     }
 }
