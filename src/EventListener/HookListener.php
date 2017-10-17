@@ -19,12 +19,33 @@ class HookListener extends \Controller
         'footer'
     ];
 
+    const OVERSCROLL_REPLACE_PATTERN = '<!-- overscroll.content -->';
+
     public function __construct()
     {
     }
 
-    public function renderOverscrollBlock($page, $layout, &$handler)
+    public function renderOverscrollBlockModule($blockModule, $return)
     {
+        switch ($blockModule->type)
+        {
+            case 'overscroll':
+                return static::OVERSCROLL_REPLACE_PATTERN;
+                break;
+        }
+
+        return $return;
+    }
+
+    public function generateOverscroll($page, $layout, &$handler)
+    {
+        $sections = $handler->Template->sections;
+
+        if (!isset($sections['overscroll']) || strpos($sections['overscroll'], static::OVERSCROLL_REPLACE_PATTERN ) === false)
+        {
+            return;
+        }
+
         $overscrollModule = false;
 
         foreach (deserialize($layout->modules, true) as $index => $module) {
@@ -55,8 +76,6 @@ class HookListener extends \Controller
             $parsedSections .= $frontendTemplate->parse();
         }
 
-        $sections = $handler->Template->sections;
-
         $frontendTemplate                    = new FrontendTemplate('section_overscroll');
         $frontendTemplate->overscroll        = $parsedSections;
         $frontendTemplate->lineColor         = $blockModule->overscrollLineColor;
@@ -82,7 +101,8 @@ class HookListener extends \Controller
             }
         }
 
-        $sections['overscroll'] = $frontendTemplate->parse();
+        $sections['overscroll'] = str_replace(static::OVERSCROLL_REPLACE_PATTERN,
+            $frontendTemplate->parse(), $sections['overscroll']);
 
         $handler->Template->__set('sections', $sections);
     }

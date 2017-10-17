@@ -6,11 +6,15 @@
         allowJumpTo: false,
         jumpToCalled: false,
         initOverscroll: function() {
-            var self = this;
+            var self = this,
+                $overscroll = $('#overscroll');
+
+            if ($overscroll.length < 1) {
+                return;
+            }
 
             $(window).scroll(function() {
-                if (!Overscroll.allowJumpTo)
-                {
+                if (!Overscroll.allowJumpTo) {
                     setTimeout(function() {
                         Overscroll.allowJumpTo = true;
                     }, 2000);
@@ -40,8 +44,7 @@
                 rotate: el.getAttribute('data-rotate') || 0
             }, canvas;
 
-            if (Overscroll.allowJumpTo && !Overscroll.jumpToCalled && options.percentage >= 100 && $circle.find('.caption').length > 0)
-            {
+            if (Overscroll.allowJumpTo && !Overscroll.jumpToCalled && options.percentage >= 100 && $circle.find('.caption').length > 0) {
                 Overscroll.jumpToCalled = true;
                 location.href = $circle.find('.caption').attr('href');
                 $circle.addClass('jumped');
