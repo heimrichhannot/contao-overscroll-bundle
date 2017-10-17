@@ -6,7 +6,7 @@
   "require": {
     "php": ">=5.6.0",
     "contao/core-bundle": "^4.4",
-    "heimrichhannot/contao-blocks": "^1.1",
+    "heimrichhannot/contao-blocks": "^1.2",
     "heimrichhannot/contao-components": "^1.1"
   },
   "require-dev": {
