@@ -13,7 +13,7 @@ This bundle offers overscroll functionality (as often used on news websites) for
 ### Technical instructions
 
 1\. This bundle depends on [heimrichhannot/contao-blocks](https://github.com/heimrichhannot/contao-blocks) for specifying on which pages (and under which circumstances) the overscroll area is shown.
-   Hence the first step is to create a block and configure the overscroll area to your needs:
+   Hence the first step is to create a block and inside a block module where you can configure the overscroll area to your needs:
 
    ![alt block](docs/block.png)
 
