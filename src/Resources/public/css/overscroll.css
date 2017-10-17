@@ -1,0 +1,35 @@
+#overscroll {
+  position: relative; }
+  #overscroll .inside {
+    opacity: 0.5; }
+  #overscroll .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%; }
+  #overscroll .progress-circle {
+    position: absolute;
+    top: 30px;
+    width: 100%; }
+    #overscroll .progress-circle.jumped {
+      opacity: 0.5; }
+    #overscroll .progress-circle > a, #overscroll .progress-circle > canvas {
+      display: block;
+      margin: auto;
+      width: 145px; }
+    #overscroll .progress-circle > a {
+      font-size: 22px;
+      line-height: 26px;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 41px;
+      z-index: 10; }
+    #overscroll .progress-circle > canvas {
+      height: 145px;
+      background-color: white;
+      border-radius: 80px; }
+
+/*# sourceMappingURL=overscroll.css.map */

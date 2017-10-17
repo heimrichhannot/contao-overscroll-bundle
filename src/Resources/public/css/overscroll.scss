@@ -1,0 +1,48 @@
+#overscroll {
+  position: relative;
+
+  .inside {
+    opacity: 0.5;
+  }
+
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+  }
+
+  .progress-circle {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+
+    &.jumped {
+      opacity: 0.5;
+    }
+
+    > a, > canvas {
+      display: block;
+      margin: auto;
+      width: 145px;
+    }
+
+    > a {
+      font-size: 22px;
+      line-height: 26px;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 41px;
+      z-index: 10;
+    }
+
+    > canvas {
+      height: 145px;
+      background-color: white;
+      border-radius: 80px;
+    }
+  }
+}

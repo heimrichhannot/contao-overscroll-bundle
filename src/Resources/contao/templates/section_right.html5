@@ -1,0 +1,7 @@
+<?php if ($this->right): ?>
+    <aside id="right">
+        <div class="inside">
+            <?= $this->right ?>
+        </div>
+    </aside>
+<?php endif; ?>

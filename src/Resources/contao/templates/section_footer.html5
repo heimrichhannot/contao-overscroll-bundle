@@ -1,0 +1,7 @@
+<?php if ($this->footer): ?>
+    <footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
+        <div class="inside">
+            <?= $this->footer ?>
+        </div>
+    </footer>
+<?php endif; ?>
