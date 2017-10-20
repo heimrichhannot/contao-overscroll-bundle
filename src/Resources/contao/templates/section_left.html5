@@ -1,5 +1,5 @@
 <?php if ($this->left): ?>
-    <aside id="left">
+    <aside id="overscroll-left">
         <div class="inside">
             <?= $this->left ?>
         </div>

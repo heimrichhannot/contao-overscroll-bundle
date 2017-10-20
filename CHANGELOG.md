@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2017-10-20
+
+### Changed
+- prefix cssID for section (header, footer etc.) to prevent duplicates
+
 ## [1.0.5] - 2017-10-20
 
 ### Changed

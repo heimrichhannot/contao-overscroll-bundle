@@ -1,5 +1,5 @@
 <?php if ($this->main): ?>
-    <main id="main" itemscope itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+    <main id="overscroll-main" itemscope itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
         <div class="inside">
             <?= $this->main ?>
         </div>
