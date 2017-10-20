@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2017-10-20
+
+### Changed
+- opacity replaced with transparent white layer
+- circle now has a box shadow
+
 ## [1.0.4] - 2017-10-20
 
 ### Added

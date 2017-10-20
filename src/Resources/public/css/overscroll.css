@@ -1,13 +1,20 @@
-/* line 6, overscroll.scss */
+/* line 7, overscroll.scss */
 #overscroll {
   position: relative;
 }
-/* line 9, overscroll.scss */
-#overscroll .inside {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
+/* line 12, overscroll.scss */
+#overscroll .inside:before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.25);
+  z-index: 9998;
+  left: 0;
+  top: 0;
 }
-/* line 13, overscroll.scss */
+/* line 25, overscroll.scss */
 #overscroll .cover {
   position: absolute;
   top: 0;
@@ -16,7 +23,7 @@
   width: 100%;
   height: 100%;
 }
-/* line 22, overscroll.scss */
+/* line 34, overscroll.scss */
 #overscroll .progress-circle {
   cursor: pointer;
   z-index: 9999;
@@ -32,23 +39,23 @@
   -webkit-transition: opacity 250ms linear;
   transition: opacity 250ms linear;
 }
-/* line 33, overscroll.scss */
+/* line 45, overscroll.scss */
 #overscroll .progress-circle.show {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 37, overscroll.scss */
+/* line 49, overscroll.scss */
 #overscroll .progress-circle.jumped {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 41, overscroll.scss */
+/* line 53, overscroll.scss */
 #overscroll .progress-circle > .caption, #overscroll .progress-circle > canvas {
   display: block;
   margin: auto;
   width: 145px;
 }
-/* line 47, overscroll.scss */
+/* line 59, overscroll.scss */
 #overscroll .progress-circle > .caption {
   font-size: 22px;
   line-height: 26px;
@@ -58,9 +65,12 @@
   top: 41px;
   z-index: 10;
 }
-/* line 57, overscroll.scss */
+/* line 69, overscroll.scss */
 #overscroll .progress-circle > canvas {
   height: 145px;
   background-color: white;
   border-radius: 80px;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
