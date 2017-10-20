@@ -5,7 +5,7 @@ $dca = &$GLOBALS['TL_DCA']['tl_block_module'];
 /**
  * Palettes
  */
-$dca['palettes']['overscroll'] = '{type_legend},type;{overscroll_legend},overscrollLayoutSections,overscrollJumpTo,overscrollHeight,overscrollCaption,overscrollLineColor,overscrollLineColorFinished;{page_legend},addVisibility,pages,addPageDepth,keywords;{feature_legend},feature;{hide_legend},hide;{expert_legend:hide},addWrapper';
+$dca['palettes']['overscroll'] = '{type_legend},type;{overscroll_legend},overscrollLayoutSections,overscrollHiddenLayoutSections,overscrollJumpTo,overscrollHeight,overscrollCaption,overscrollLineColor,overscrollLineColorFinished;{page_legend},addVisibility,pages,addPageDepth,keywords;{feature_legend},feature;{hide_legend},hide;{expert_legend:hide},addWrapper';
 
 /**
  * Fields
@@ -15,6 +15,14 @@ $fields = [
         'label'            => &$GLOBALS['TL_LANG']['tl_block_module']['overscrollLayoutSections'],
         'exclude'          => true,
         'inputType'        => 'checkboxWizard',
+        'options_callback' => ['HeimrichHannot\OverscrollBundle\Backend\BlockModule', 'getLayoutSectionsAsOptions'],
+        'eval'             => ['tl_class' => 'w50', 'multiple' => true],
+        'sql'              => "blob NULL'"
+    ],
+    'overscrollHiddenLayoutSections'    => [
+        'label'            => &$GLOBALS['TL_LANG']['tl_block_module']['overscrollHiddenLayoutSections'],
+        'exclude'          => true,
+        'inputType'        => 'checkbox',
         'options_callback' => ['HeimrichHannot\OverscrollBundle\Backend\BlockModule', 'getLayoutSectionsAsOptions'],
         'eval'             => ['tl_class' => 'w50', 'multiple' => true],
         'sql'              => "blob NULL'"

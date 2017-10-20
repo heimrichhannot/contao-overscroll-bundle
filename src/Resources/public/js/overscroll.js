@@ -27,27 +27,39 @@
             var $overscroll = $('#overscroll'),
                 $circle = $('.progress-circle'),
                 el = $circle.get(0),
+                url = $circle.data('url'),
                 scroll = $(window).scrollTop(),
-                start = $('body').outerHeight() - $overscroll.height() - $(window).height() + 50,
+                start = $('body').outerHeight() - $overscroll.height() - $(window).height(),
                 progress = 0.1; // 50 is the padding
 
             if (scroll > start) {
                 progress = scroll - start;
+                if (!$circle.hasClass('show')) {
+                    $circle.addClass('show');
+                }
+            } else {
+                $circle.removeClass('show');
             }
 
             var options = {
-                percentage: 100 * progress / ($overscroll.height() / 1.5),
+                percentage: 100 * progress / $overscroll.height(),
                 size: el.getAttribute('data-size') || 220,
-                lineWidth: el.getAttribute('data-line') || 15,
+                lineWidth: el.getAttribute('data-line') || 7,
                 lineColor: el.getAttribute('data-line-color') || '#FFFFFF',
                 lineColorFinished: el.getAttribute('data-line-color-finished') || '#555555',
                 rotate: el.getAttribute('data-rotate') || 0
             }, canvas;
 
-            if (Overscroll.allowJumpTo && !Overscroll.jumpToCalled && options.percentage >= 100 && $circle.find('.caption').length > 0) {
+            if (Overscroll.allowJumpTo && !Overscroll.jumpToCalled && options.percentage >= 100 && typeof url !== 'undefined') {
                 Overscroll.jumpToCalled = true;
-                location.href = $circle.find('.caption').attr('href');
+                location.href = url;
                 $circle.addClass('jumped');
+            }
+
+            if (typeof url !== 'undefined') {
+                $circle.on('click', function(e) {
+                    location.href = url;
+                });
             }
 
             if ($circle.find('canvas').length > 0) {

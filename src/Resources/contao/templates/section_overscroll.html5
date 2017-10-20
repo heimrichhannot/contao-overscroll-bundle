@@ -1,14 +1,16 @@
 <?php if ($this->overscroll): ?>
-    <div id="overscroll" style="height: <?= $this->height ?>">
+    <div id="overscroll">
         <div class="inside">
             <?= $this->overscroll ?>
+
+            <div class="overscroll-gap" style="height: <?= $this->height ?>"></div>
         </div>
 
         <div class="cover"></div>
 
-        <div class="progress-circle" data-line-color="<?= $this->lineColor ?>" data-line-color-finished="<?= $this->lineColorFinished ?>">
+        <div class="progress-circle" data-line-color="<?= $this->lineColor ?>" data-line-color-finished="<?= $this->lineColorFinished ?>" data-url="<?= $this->jumpToUrl ?>">
             <?php if ($this->caption): ?>
-                <a class="caption" href="<?= $this->jumpToUrl ?>"><?= $this->caption ?></a>
+                <span class="caption"><?= $this->caption ?></span>
             <?php endif; ?>
         </div>
     </div>

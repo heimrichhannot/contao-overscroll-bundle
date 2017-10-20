@@ -27,8 +27,7 @@ class HookListener extends \Controller
 
     public function renderOverscrollBlockModule($blockModule, $return)
     {
-        switch ($blockModule->type)
-        {
+        switch ($blockModule->type) {
             case 'overscroll':
                 return static::OVERSCROLL_REPLACE_PATTERN;
                 break;
@@ -41,8 +40,7 @@ class HookListener extends \Controller
     {
         $sections = $handler->Template->sections;
 
-        if (!isset($sections['overscroll']) || strpos($sections['overscroll'], static::OVERSCROLL_REPLACE_PATTERN ) === false)
-        {
+        if (!isset($sections['overscroll']) || strpos($sections['overscroll'], static::OVERSCROLL_REPLACE_PATTERN) === false) {
             return;
         }
 
@@ -66,9 +64,10 @@ class HookListener extends \Controller
             return;
         }
 
-        $parsedSections = '';
+        $parsedSections  = '';
+        $visibleSections = deserialize($blockModule->overscrollLayoutSections, true);
 
-        foreach (deserialize($blockModule->overscrollLayoutSections, true) as $section) {
+        foreach ($visibleSections as $section) {
             $frontendTemplate             = new FrontendTemplate('section_' . $section);
             $frontendTemplate->{$section} = in_array($section, static::$defaultSections) ?
                 $handler->Template->{$section} : $handler->Template->sections[$section];
@@ -92,10 +91,8 @@ class HookListener extends \Controller
 
         $frontendTemplate->height = $height['value'] . $height['unit'];
 
-        if (isset($GLOBALS['TL_HOOKS']['adjustOverscroll']) && is_array($GLOBALS['TL_HOOKS']['adjustOverscroll']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['adjustOverscroll'] as $callback)
-            {
+        if (isset($GLOBALS['TL_HOOKS']['adjustOverscroll']) && is_array($GLOBALS['TL_HOOKS']['adjustOverscroll'])) {
+            foreach ($GLOBALS['TL_HOOKS']['adjustOverscroll'] as $callback) {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($frontendTemplate, $blockModule, $page, $layout);
             }
@@ -103,6 +100,14 @@ class HookListener extends \Controller
 
         $sections['overscroll'] = str_replace(static::OVERSCROLL_REPLACE_PATTERN,
             $frontendTemplate->parse(), $sections['overscroll']);
+
+        $hiddenSections = deserialize($blockModule->overscrollHiddenLayoutSections, true);
+
+        foreach ($hiddenSections as $hiddenSection) {
+            if (in_array($hiddenSection, $visibleSections)) {
+                unset($sections[$hiddenSection]);
+            }
+        }
 
         $handler->Template->__set('sections', $sections);
     }

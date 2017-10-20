@@ -12,7 +12,7 @@ $GLOBALS['TL_HOOKS']['generatePage']['generateOverscroll']                     =
 $GLOBALS['TL_COMPONENTS']['overscroll.js'] = [
     'js' => [
         'files' => [
-            'bundles/overscroll/js/overscroll.js|static'
+            'bundles/overscroll/js/overscroll.min.js|static'
         ],
     ],
 ];
