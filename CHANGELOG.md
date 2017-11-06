@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2017-11-06
+
+### Changed
+- updated config.php for contao-components 2.0
+
 ## [1.0.6] - 2017-10-20
 
 ### Changed

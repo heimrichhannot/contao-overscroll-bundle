@@ -10,17 +10,17 @@ $GLOBALS['TL_HOOKS']['generatePage']['generateOverscroll']                     =
  * Components
  */
 $GLOBALS['TL_COMPONENTS']['overscroll.js'] = [
-    'js' => [
-        'files' => [
-            'bundles/overscroll/js/overscroll.min.js|static'
-        ],
+    'js'  => [
+        'bundles/overscroll/js/overscroll.min.js|static',
+    ],
+    'css' => [
+        'bundles/overscroll/css/overscroll.css|screen|static',
     ],
 ];
 
-$GLOBALS['TL_COMPONENTS']['overscroll.css'] = [
-    'css' => [
-        'files' => [
-            'bundles/overscroll/css/overscroll.css|screen|static'
-        ]
-    ],
-];
+if (TL_MODE == 'FE') {
+    $GLOBALS['TL_JAVASCRIPT']['overscroll'] = 'bundles/overscroll/css/overscroll.css|screen|static';
+    $GLOBALS['TL_CSS']['overscroll']        = 'bundles/overscroll/js/overscroll.min.js|static';
+}
+
+
