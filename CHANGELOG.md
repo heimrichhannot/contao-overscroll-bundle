@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2017-11-06
+
+### Fixed
+- switched js with css file
+
 ## [1.0.7] - 2017-11-06
 
 ### Changed

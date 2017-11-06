@@ -19,8 +19,8 @@ $GLOBALS['TL_COMPONENTS']['overscroll.js'] = [
 ];
 
 if (TL_MODE == 'FE') {
-    $GLOBALS['TL_JAVASCRIPT']['overscroll'] = 'bundles/overscroll/css/overscroll.css|screen|static';
-    $GLOBALS['TL_CSS']['overscroll']        = 'bundles/overscroll/js/overscroll.min.js|static';
+    $GLOBALS['TL_JAVASCRIPT']['overscroll'] = 'bundles/overscroll/js/overscroll.min.js|static';
+    $GLOBALS['TL_CSS']['overscroll']        = 'bundles/overscroll/css/overscroll.css|screen|static';
 }
 
 
