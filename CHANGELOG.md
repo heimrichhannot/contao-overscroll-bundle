@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2017-11-24
+
+### Fixed
+- catch browser back initial jumpTo scroll
+
 ## [1.0.8] - 2017-11-06
 
 ### Fixed

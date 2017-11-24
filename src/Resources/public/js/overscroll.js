@@ -3,8 +3,8 @@
         init: function() {
             this.initOverscroll();
         },
-        allowJumpTo: false,
         jumpToCalled: false,
+        iterator: 0,
         initOverscroll: function() {
             var self = this,
                 $overscroll = $('#overscroll');
@@ -14,12 +14,6 @@
             }
 
             $(window).scroll(function() {
-                if (!Overscroll.allowJumpTo) {
-                    setTimeout(function() {
-                        Overscroll.allowJumpTo = true;
-                    }, 2000);
-                }
-
                 self.updateOverscroll();
             });
         },
@@ -50,7 +44,8 @@
                 rotate: el.getAttribute('data-rotate') || 0
             }, canvas;
 
-            if (Overscroll.allowJumpTo && !Overscroll.jumpToCalled && options.percentage >= 100 && typeof url !== 'undefined') {
+            // catch browser back initial jumpTo scroll with Overscroll.iterator
+            if (Overscroll.iterator > 2 && !Overscroll.jumpToCalled && options.percentage >= 100 && typeof url !== 'undefined') {
                 Overscroll.jumpToCalled = true;
                 location.href = url;
                 $circle.addClass('jumped');
@@ -103,6 +98,8 @@
                 context.lineWidth = lineWidth;
                 context.stroke();
             };
+
+            Overscroll.iterator++;
 
             drawCircle(options.lineColor, options.lineWidth, 100 / 100);
             drawCircle(options.lineColorFinished, options.lineWidth, options.percentage / 100);
