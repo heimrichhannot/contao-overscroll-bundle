@@ -1,3 +1,4 @@
 services:
     huh.overscroll.listener.hooks:
         class: HeimrichHannot\OverscrollBundle\EventListener\HookListener
+        public: true
